@@ -3,16 +3,13 @@
   "extends": [
     "config:base"
   ],
-   "dependencyDashboard": false,
+   "dependencyDashboard": true,
    "major": {
     "enabled": false
    },
    "schedule": [
-    "every 1 hour after 00:00 and before 23:59 every day"
+    "after 10am before 7pm on the end day of the month"
    ],
-   "automergeSchedule": [
-    "every 1 hour after 00:00 and before 23:59 every day"
-  ],
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
