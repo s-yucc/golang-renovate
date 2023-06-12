@@ -1,25 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
-   "dependencyDashboard": true,
-   "major": {
-    "enabled": false
-   },
-   "schedule": [
-    "after 10am before 7pm on the end day of the month"
-   ],
+  "rebaseWhen": "conflicted",
+  "labels": ["rebase"],
+  "postUpdateOptions": ["gomodTidy"],
+  "prConcurrentLimit": 1,
   "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "matchPackagePatterns": ["eslint"],
-      "groupName": "eslint",
-      "automerge": true
-    }
-  ]
+      {
+          "matchUpdateTypes": ["major"],
+          "dependencyDashboardApproval": true
+      },
+      {
+          "matchUpdateTypes": ["patch", "minor"],
+          "groupName": "minor and patch dependencies"
+      }
+  ],
+  "enabledManagers": ["gomod"],
+  "baseBranches": ["feature/renovate-schedule"]
 }
